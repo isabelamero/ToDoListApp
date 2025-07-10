@@ -7,6 +7,7 @@
     tools:context=".HomeFragment">
 
     <SearchView
+        android:background="#FFFFFF"
         android:id="@+id/search_view_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

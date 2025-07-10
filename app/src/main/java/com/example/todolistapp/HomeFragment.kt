@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
     private fun popularListaDeTarefasInicial() {
         // Tarefas iniciais com categorias de desenvolvimento
-        listaDeTarefas.add(Tarefa("Escrever Documentação API", "Documentar endpoints e parâmetros da nova API", "Documentação", "18/07/2025", "5 dias", false, R.drawable.ic_check_circle_green_24dp))
+        listaDeTarefas.add(Tarefa("Avaliar Jonathas Leontino", "Descer a lenha no Jonathas Leontino Medina na avaliação docente", "Documentação", "18/07/2025", "5 dias", false, R.drawable.ic_check_circle_green_24dp))
         listaDeTarefas.add(Tarefa("Implementar Login OAuth", "Desenvolver autenticação OAuth 2.0 no backend", "BackEnd", "10/07/2025", "0 dias", true, R.drawable.ic_warning_yellow_24dp))
         listaDeTarefas.add(Tarefa("Criar Componente de Botão", "Desenvolver um componente reutilizável de botão em React", "FrontEnd", "25/07/2025", "12 dias", false, R.drawable.ic_check_circle_green_24dp))
         listaDeTarefas.add(Tarefa("Otimizar Consulta SQL", "Analisar e otimizar query lenta no banco de dados", "Banco de Dados", "05/07/2025", "Atrasado", true, R.drawable.ic_warning_yellow_24dp))
