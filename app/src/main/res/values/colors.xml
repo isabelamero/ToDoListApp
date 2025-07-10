@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="azul_principal">#1678DC</color>
+    <color name="azul_claro">#64B5F6</color>
+    <color name="azul_escuro">#0D47A1</color>
+    <color name="cinza_claro">#F0F0F0</color>
+    <color name="cinza_texto_secundario">#757575</color>
+    <color name="verde_status_ok">#4CAF50</color>
+    <color name="amarelo_status_alerta">#FFC107</color>
+
+    <color name="pessego_claro">#FFDAB9</color>
+    <color name="coral_suave">#FFCCCC</color>
+
+    <color name="fundo_escuro_principal_app">#000033</color> <color name="fundo_escuro_card_superficie">#2C2C5E</color> <color name="texto_claro_escuro">#FFFFFFFF</color> <color name="fundo_escuro_principal">#121212</color>
+    <color name="fundo_escuro_secundario">#1E1E1E</color>
+    <color name="azul_escuro_contraste">#0A2542</color>
 </resources>

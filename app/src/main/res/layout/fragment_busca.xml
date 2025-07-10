@@ -7,7 +7,7 @@
     tools:context=".BuscaFragment">
 
     <SearchView
-        android:background="#FFFFFF"
+        android:background="?attr/colorSurface"
         android:id="@+id/search_view_busca"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

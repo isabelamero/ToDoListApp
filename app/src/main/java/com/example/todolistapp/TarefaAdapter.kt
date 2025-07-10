@@ -1,5 +1,6 @@
 package com.example.todolistapp
 
+import android.util.TypedValue
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +71,7 @@ class TarefaAdapter(
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
-            }.time // Zera a hora para comparar apenas a data
+            }.time
 
             if (dataVencimento != null) {
                 val diffInMillis = dataVencimento.time - hoje.time
@@ -87,23 +88,25 @@ class TarefaAdapter(
                 holder.prazo.text = "Prazo: ${tarefa.prazo}"
 
                 if (tarefa.isAtrasada) {
-                    holder.prazo.setTextColor(Color.RED)
+                    holder.prazo.setTextColor(Color.RED) // Mantém o vermelho para atrasado
                     holder.statusIcon.setImageResource(R.drawable.ic_warning_yellow_24dp)
                 } else {
-                    holder.prazo.setTextColor(Color.BLACK)
+                    // Para prazo normal, use a cor de texto padrão do tema (colorOnSurface, que será branco no escuro e preto no claro)
+                    val typedValue = TypedValue()
+                    holder.prazo.context.theme.resolveAttribute(com.google.android.material.R.attr.colorOnSurface, typedValue, true) // OU com.google.android.material.R.attr.colorOnSurface
+                    holder.prazo.setTextColor(typedValue.data)
+
                     holder.statusIcon.setImageResource(R.drawable.ic_check_circle_green_24dp)
                 }
             } else {
-                // Caso a dataVencimento seja nula por algum motivo de parsing
                 holder.prazo.text = "Prazo: Data Inválida"
-                holder.prazo.setTextColor(Color.GRAY)
-                holder.statusIcon.setImageResource(R.drawable.ic_warning_yellow_24dp) // Ou outro ícone para erro
+                holder.prazo.setTextColor(Color.GRAY) // Pode ser Color.RED ou outra cor de erro
+                holder.statusIcon.setImageResource(R.drawable.ic_warning_yellow_24dp)
             }
         } catch (e: Exception) {
-            // Tratamento de erro para formato de data inválido
             holder.prazo.text = "Prazo: Erro de Formato"
-            holder.prazo.setTextColor(Color.GRAY)
-            holder.statusIcon.setImageResource(R.drawable.ic_warning_yellow_24dp) // Ou outro ícone para erro
+            holder.prazo.setTextColor(Color.GRAY) // Pode ser Color.RED ou outra cor de erro
+            holder.statusIcon.setImageResource(R.drawable.ic_warning_yellow_24dp)
         }
 
         holder.deleteIcon.setImageResource(R.drawable.ic_delete_black_24dp)

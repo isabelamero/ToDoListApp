@@ -1,5 +1,8 @@
 package com.example.todolistapp
 
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +20,10 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var tarefaAdapter: TarefaAdapter
     private lateinit var listaDeTarefas: ArrayList<Tarefa>
+    private lateinit var themeSwitch: SwitchCompat
 
+    private val PREFS_NAME = "MyThemePrefs" // NOVO
+    private val THEME_KEY = "isNightMode" // NOVO
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +32,7 @@ class HomeFragment : Fragment() {
 
         searchView = view.findViewById(R.id.search_view_home)
         recyclerView = view.findViewById(R.id.recycler_view_home)
+        themeSwitch = view.findViewById(R.id.theme_switch)
 
         if (activity is MainActivity) {
             listaDeTarefas = (activity as MainActivity).listaDeTarefasGlobal
@@ -38,6 +45,8 @@ class HomeFragment : Fragment() {
             popularListaDeTarefasInicial()
         }
 
+        loadThemePreference()
+        setupThemeSwitchListener()
         configurarRecyclerView()
         configurarSearchView()
 
@@ -102,4 +111,44 @@ class HomeFragment : Fragment() {
             }
             .show()
     }
+    private fun loadThemePreference() {
+
+        val prefs = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isNightMode = prefs.getBoolean(THEME_KEY, false)
+
+        themeSwitch.isChecked = isNightMode
+
+        applyTheme(isNightMode)
+    }
+
+
+    private fun setupThemeSwitchListener() {
+        themeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            applyTheme(isChecked)
+            saveThemePreference(isChecked)
+        }
+    }
+
+
+    private fun applyTheme(isNightMode: Boolean) {
+        if (isNightMode) {
+            // Define o tema para modo noturno (escuro)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            // Define o tema para modo diurno (claro)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+    }
+
+
+    private fun saveThemePreference(isNightMode: Boolean) {
+
+        val prefs = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+
+        editor.putBoolean(THEME_KEY, isNightMode)
+        editor.apply()
+    }
+
 }
