@@ -5,158 +5,200 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CadastroFragment"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="?android:attr/colorBackground"> <TextView
+    android:id="@+id/text_title_form_outside_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Nova Tarefa"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    android:textColor="?attr/colorOnBackground"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/text_title_form"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Novo To-Do"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/white" app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/edit_text_titulo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Título da Tarefa"
-        android:inputType="textCapSentences"
-        android:minHeight="48dp"
-        android:textColor="@color/white" android:textColorHint="@color/white" app:layout_constraintTop_toBottomOf="@+id/text_title_form"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_text_descricao"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/form_card_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Descrição da Tarefa"
-        android:textColor="@color/white" android:textColorHint="@color/white" android:inputType="textMultiLine"
-        android:minLines="3"
-        android:gravity="top"
-        android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_titulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/layout_categoria_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_descricao"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_form_outside_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categoria:"
-            android:textSize="16sp"
-            android:textColor="@color/white" android:layout_marginBottom="8dp"/>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="16dp"
+            android:background="?attr/colorSurface">
 
-            <RadioGroup
-                android:id="@+id/radio_group_categoria_col1"
+            <EditText
+                android:id="@+id/edit_text_titulo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:hint="Título da Tarefa"
+                android:inputType="textCapSentences"
+                android:minHeight="48dp"
+                android:textColor="?attr/colorOnSurface"
+                android:textColorHint="@color/cinza_texto_secundario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <RadioButton
-                    android:id="@+id/radio_documentacao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Documentação"
-                    android:textColor="@color/white" android:minHeight="48dp" />
-
-                <RadioButton
-                    android:id="@+id/radio_desenvolvimento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Desenvolvimento"
-                    android:textColor="@color/white" android:minHeight="48dp" />
-
-                <RadioButton
-                    android:id="@+id/radio_backend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BackEnd"
-                    android:textColor="@color/white" android:minHeight="48dp" />
-
-                <RadioButton
-                    android:id="@+id/radio_frontend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FrontEnd"
-                    android:textColor="@color/white" android:minHeight="48dp" />
-
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/radio_group_categoria_col2"
+            <EditText
+                android:id="@+id/edit_text_descricao"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:gravity="top"
+                android:hint="Descrição da Tarefa"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:minLines="3"
+                android:textColor="?attr/colorOnSurface"
+                android:textColorHint="@color/cinza_texto_secundario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_titulo" />
+
+            <LinearLayout
+                android:id="@+id/layout_categoria_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="16dp">
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_descricao"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <RadioButton
-                    android:id="@+id/radio_banco_de_dados"
+                <TextView
+                    android:id="@+id/text_categoria_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Banco de Dados"
-                    android:textColor="@color/white" android:minHeight="48dp" />
+                    android:text="Categoria:"
+                    android:textSize="16sp"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginBottom="8dp"/>
 
-                <RadioButton
-                    android:id="@+id/radio_testes"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Testes"
-                    android:textColor="@color/white" android:minHeight="48dp" />
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radio_devops"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DevOps"
-                    android:textColor="@color/white" android:minHeight="48dp" />
+                    <RadioGroup
+                        android:id="@+id/radio_group_categoria_col1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/radio_documentacao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Documentação"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
 
-                <RadioButton
-                    android:id="@+id/radio_ui_ux"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UI/UX"
-                    android:textColor="@color/white" android:minHeight="48dp" />
+                        <RadioButton
+                            android:id="@+id/radio_desenvolvimento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Desenvolvimento"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
 
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radio_backend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BackEnd"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
 
-        </LinearLayout>
+                        <RadioButton
+                            android:id="@+id/radio_frontend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FrontEnd"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
 
-    </LinearLayout>
+                    </RadioGroup>
 
-    <EditText
-        android:id="@+id/edit_text_data_finalizacao"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Data de Finalização (DD/MM/AAAA)"
-        android:inputType="date"
-        android:minHeight="48dp"
-        android:textColor="@color/white" android:textColorHint="@color/white" app:layout_constraintTop_toBottomOf="@+id/layout_categoria_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                    <RadioGroup
+                        android:id="@+id/radio_group_categoria_col2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <RadioButton
+                            android:id="@+id/radio_banco_de_dados"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Banco de Dados"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_testes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Testes"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_devops"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DevOps"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_ui_ux"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UI/UX"
+                            android:textColor="?attr/colorOnSurface"
+                            android:buttonTint="?attr/colorPrimary"
+                            android:minHeight="48dp" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit_text_data_finalizacao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Data de Finalização (DD/MM/AAAA)"
+                android:inputType="date"
+                android:minHeight="48dp"
+                android:textColor="?attr/colorOnSurface"
+                android:textColorHint="@color/cinza_texto_secundario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_categoria_container" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button_salvar_tarefa"
@@ -165,10 +207,11 @@
         android:layout_marginTop="32dp"
         android:minHeight="48dp"
         android:text="Salvar Tarefa"
+        android:background="@drawable/button_solid_white_rounded"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_data_finalizacao"
-        app:rippleColor="?attr/colorOnPrimary"
-        app:cornerRadius="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/form_card_container"
+        app:rippleColor="?attr/colorOnPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
